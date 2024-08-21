@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:composition template="template.xhtml">
+ 
+<ui:define name="conteudo">
+
+<style>
+.principal {	
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.caixa-secundaria {
+	width: 390px;
+	padding: 10px;
+}
+
+.input-style {
+	width: 480px;
+	
+}
+.input-style2 {
+	background-color: #7ba05b !important;
+	border-radius: 5px !important;
+	color: white !important;
+	text-decoration: none !important;
+	border: none !important;
+}
+.divide {
+	display: flex;
+	width: 300px;
+}
+.input-style1 {
+	width: 350px;
+}
+</style>
+<f:metadata>
+    		<f:viewParam name="id" value="#{cadastroNoticiaBean.noticiaId}" />
+    		<f:event type="preRenderView" listener="#{cadastroNoticiaBean.carregarNoticia(cadastroNoticiaBean.noticiaId)}" />
+		</f:metadata>
+		
+<p:growl id="msg" life="5000"/>
+
+
+<h:form enctype="multipart/form-data">
+	<div class="principal">
+		<div class="caixa-secundaria">
+			<div>
+				<p:outputLabel value="Foto notícia" for="@next" /><br/>
+				<div class="divide">
+				 <p:fileUpload class="input-style1" value="#{cadastroNoticiaBean.uploadedFile}" mode="simple"
+                              skinSimple="true" required="true" requiredMessage="Campo foto obrigatório!" 
+                              disabled="#{!cadastroNoticiaBean.editPhotoEnabled}"/> 
+                              <p:commandButton  required="true" requiredMessage="Campo foto obrigatório!"  class="input-style1" value="Editar Foto" actionListener="#{cadastroNoticiaBean.enablePhotoEdit}" 
+                             update="@form" rendered="#{!cadastroNoticiaBean.editPhotoEnabled}"/>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Manchete" for="@next" /><br/>
+				<p:inputText class="input-style" value="#{cadastroNoticiaBean.noticia.manchete}"/>
+				
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Texto auxiliar" for="@next" /><br/>
+				<p:inputText class="input-style" value="#{cadastroNoticiaBean.noticia.tituloAuxiliar}"/>
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Lide" for="@next" /><br/>
+				<p:inputText class="input-style" value="#{cadastroNoticiaBean.noticia.lide}"/>
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Corpo da Noticia:" for="@next"/>
+				<p:textEditor class="input-style" widgetVar="editor1" value="#{cadastroNoticiaBean.noticia.corpoDaNoticia}" height="300px" secure="false"/>
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Tema" for="@next"/>
+				<p:selectOneMenu class="input-style" value="#{cadastroNoticiaBean.noticia.tema}">
+					<f:selectItem itemLabel="Selecione..." itemValue="#{null}" required="true" requiredMessage="Tema não pode ser vazio"/>
+					<f:selectItems value="#{cadastroNoticiaBean.temasDisponiveis}" var="ntcAtual" itemLabel="#{ntcAtual}" itemValue="#{ntcAtual}"/>
+				</p:selectOneMenu>
+			</div>
+			<br/>
+			
+				<p:commandButton class="input-style2 input-style" value="Atualizar" process="@form" update="msg" ajax="false"  action="#{cadastroNoticiaBean.gravar()}" />
+		</div>
+	</div>	
+</h:form>
+
+</ui:define>
+</ui:composition>
+
+</html>

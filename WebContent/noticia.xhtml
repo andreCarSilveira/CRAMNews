@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<ui:composition template="template.xhtml">
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/noticia.css" />
+</h:head> 
+</ui:define>
+    <ui:define name="conteudo">
+    	<f:metadata>
+    		<f:viewParam name="id" value="#{noticiaBean.noticiaId}" />
+    		<f:event type="preRenderView" listener="#{noticiaBean.carregarNoticia(noticiaBean.noticiaId)}" />
+		</f:metadata>
+		
+		<div class="noticia">
+			<div class="tema">
+				<h1>#{noticiaBean.noticia.tema}</h1>
+			</div>
+        
+        	<div class="inicio">
+        		<h1>#{noticiaBean.noticia.manchete}</h1>
+        		<h2>#{noticiaBean.noticia.tituloAuxiliar}</h2>
+        		<p:graphicImage class="foto-noticia" value="#{noticiaBean.noticia.foto}" stream="false" />
+        		<p:outputLabel>Publicado por </p:outputLabel>
+        		<a href="noticiaEspecifica.xhtml?id=#{noticiaBean.noticia.colunista.id}" class="tag-a-format">
+                    <p:outputLabel value="#{noticiaBean.noticia.colunista.nome}. " />
+                </a>
+        		<p:outputLabel value="Publicado em: #{noticiaBean.noticia.dataPublicacao}. Atualizado em: #{noticiaBean.noticia.dataEdicao}" styleClass="datas" />
+        		<p:outputLabel value="#{noticiaBean.noticia.lide}" styleClass="lide" />
+        	</div>
+        
+        	<hr></hr>
+        
+        	<div class="meio">
+        		<h:outputText value="#{noticiaBean.noticia.corpoDaNoticia}" escape="false" />
+        	</div>
+        	
+        	<div class="fim">
+        		<div class="reacoes">
+        			
+        			<h:form id="formCurtidas">
+        				<p:growl id="msg1" life="3000"/>
+    					<p:commandButton value="#{noticiaBean.noticia.curtidas}" icon="pi pi-thumbs-up-fill" styleClass="rounded-button" action="#{noticiaBean.curtir()}" process="@form" update="@form, formDescurtidas" />
+        			&nbsp;
+        			</h:form>
+        			<h:form id="formDescurtidas">
+        				<p:growl id="msg2" life="3000"/>
+        				<p:commandButton icon="pi pi-thumbs-down-fill" value="#{noticiaBean.noticia.dislikes}" styleClass="rounded-button ui-button-danger" action="#{noticiaBean.descurtir()}" process="@form" update="@form, formCurtidas" />
+        			
+        			</h:form>
+        		</div>
+        		<br/>
+        		<div class="comentarios">
+        			<h:form id="formCadastro">
+        				<p:growl id="msg3" life="3000"/>
+	        			<div class="area-cadastro">
+	            			<p:panelGrid columns="1" id="areaCadastro" style="width: 100%;">
+	            				<p:inputText value="#{noticiaBean.comentario.titulo}" placeholder="Insira aqui o título do comentário..." styleClass="inp-comentario" required="true" requiredMessage="Título obrigatório!" />
+	            				<p:inputTextarea rows="5" cols="30" value="#{noticiaBean.comentario.texto}" placeholder="Insira aqui o comentário..." styleClass="inp-comentario" required="true" requiredMessage="Comentário obrigatório!" />
+	            				<p:commandButton value="Comentar" action="#{noticiaBean.comentar()}"
+									process="@form" update="@form, formListagem" styleClass="rounded-button ui-button-success"/>
+	            			</p:panelGrid>
+	            		</div>
+            		</h:form>
+        			<h:form id="formListagem">
+        				<p:dataScroller value="#{noticiaBean.noticia.comentarios}" var="comentario" chunkSize="5">
+            			<f:facet name="header">
+               			 	Comentários
+            			</f:facet>
+
+            			<f:facet name="loader">
+                			<div class="text-center">
+                    			<p:commandButton type="button" value="Mais Comentários" icon="pi pi-refresh"/>
+                			</div>
+            			</f:facet>
+
+            			<div class="comentario">
+                			<div class="topo">
+                    			<p:graphicImage value="#{comentario.usuario.foto}" stream="false" />
+                    			<div class="textos">
+                    				<h3>#{comentario.titulo}</h3>
+                    				<p:outputLabel value="#{comentario.texto}" />
+                    			</div>
+                			</div>
+                			<div class="base">
+                    			<p:outputLabel value="#{comentario.usuario.nome} " />
+                    			<p:outputLabel value="#{comentario.dataPublicacao}" />
+                    			<a href="respostas.xhtml?id=#{comentario.id}">
+                    				Respostas
+                    			</a>
+                			</div>
+            			</div>
+        				</p:dataScroller>
+    				</h:form>
+        		</div>
+        	</div>
+        </div>
+        
+    </ui:define>
+</ui:composition>
+</body> 
+</html>

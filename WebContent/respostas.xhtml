@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<ui:composition template="template.xhtml">
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/respostas.css" />
+</h:head> 
+</ui:define>
+	<ui:define name="conteudo">
+    	<f:metadata>
+    		<f:viewParam name="id" value="#{respostasBean.comentarioId}" />
+    		<f:event type="preRenderView" listener="#{respostasBean.carregarRespostas()}" />
+		</f:metadata>
+		
+		<div class="comentario">
+			<div class="topo">
+			<p:graphicImage value="#{respostasBean.comentario.usuario.foto}" stream="false" />
+               
+                <div class="texto-comentario">
+    				<h3>#{respostasBean.comentario.titulo}</h3>
+    				<p>#{respostasBean.comentario.texto}</p>
+ 			 	</div>
+            </div>
+            <div class="base">
+                <p:outputLabel value="#{respostasBean.comentario.usuario.nome} " />
+                <p:outputLabel value="#{respostasBean.comentario.dataPublicacao}" />
+            </div>
+		</div>
+		
+		<h:form id="formCadastro">
+			<p:growl id="msg1" life="3000"/>
+	        <div class="area-cadastro">
+	            <p:panelGrid columns="2" id="areaCadastro" style="width: 100%;" columnClasses="coluna-90, coluna-10">
+	            	<p:inputText value="#{respostasBean.resposta.texto}" placeholder="Digite sua resposta aqui..." styleClass="tamanho-ampliado" required="true" requiredMessage="Resposta obrigatório!"/>
+	            	<p:commandButton value="Responder" action="#{respostasBean.responder()}"
+						process="@form" update="@form, formListagem" styleClass="rounded-button ui-button-success"/>
+	            </p:panelGrid>
+	        </div>
+        </h:form>
+		
+		<h:form id="formListagem">
+        	<p:dataScroller value="#{respostasBean.respostas}" var="resposta" chunkSize="10">
+            	<f:facet name="loader">
+                	<div class="text-center">
+                    	<p:commandButton type="button" value="Mais Respostas" icon="pi pi-refresh"/>
+                	</div>
+            	</f:facet>
+
+            	<div class="resposta">
+                	<div class="topo">
+                		<p:graphicImage value="#{resposta.pessoaFisica.foto}" stream="false" />
+                    	<p:outputLabel value="#{resposta.texto}" />
+                	</div>
+                	<div class="base">
+                    	<p:outputLabel value="#{resposta.pessoaFisica.nome} " />
+                    	<p:outputLabel value="#{resposta.dataPublicacao}" />
+                	</div>
+            	</div>
+        	</p:dataScroller>
+    	</h:form>
+	</ui:define>
+</ui:composition>
+</body> 
+</html>

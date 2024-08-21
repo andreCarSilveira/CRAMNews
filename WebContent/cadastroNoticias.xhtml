@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:composition template="template.xhtml">
+ 
+<ui:define name="conteudo">
+
+<style>
+.principal {	
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.caixa-secundaria {
+	width: 390px;
+	padding: 10px;
+}
+
+.input-style {
+	width: 480px !important;
+}
+</style>
+
+
+<h:form enctype="multipart/form-data">
+
+<p:growl id="msg" life="5000"/>
+
+	<div class="principal">
+		<div class="caixa-secundaria">
+			<div>
+				<p:outputLabel value="Foto notícia" for="@next" /><br/>
+				<p:fileUpload class="input-style" value="#{cadastroNoticiaBean.uploadedFile}" mode="simple" skinSimple="true" required="true" requiredMessage="Campo foto obrigatório!"/>
+			</div>
+			<br/>
+			<div>
+					<p:outputLabel value="Manchete" for="@next"/><br/>
+		<p:inputText class="input-style" value="#{cadastroNoticiaBean.noticia.manchete}" required="true" requiredMessage="Campo manchete obrigatório!" />
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Titulo Auxiliar" for="@next"/><br/>
+		<p:inputText class="input-style" value="#{cadastroNoticiaBean.noticia.tituloAuxiliar}" required="true" requiredMessage="Campo texto auxiliar obrigatório!" />
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Lide" for="@next"/><br/>
+		<p:inputText class="input-style" value="#{cadastroNoticiaBean.noticia.lide}" required="true" requiredMessage="Campo lide obrigatório!" />
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Corpo da Noticia" for="@next"/><br/>
+		<p:textEditor class="input-style" widgetVar="editor1" value="#{cadastroNoticiaBean.noticia.corpoDaNoticia}" height="300px" secure="false" required="true" requiredMessage="Campo corpo da notícia obrigatório!" />
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel value="Tema" for="@next"/><br/>
+				<p:selectOneMenu class="input-style" value="#{cadastroNoticiaBean.noticia.tema}" required="true" requiredMessage="Selecione um tema">
+					<f:selectItem itemLabel="Selecione..." itemValue="#{null}" required="true" requiredMessage="Tema não pode ser vazio"/>
+					<f:selectItems value="#{cadastroNoticiaBean.temasDisponiveis}" var="ntcAtual" itemLabel="#{ntcAtual}" itemValue="#{ntcAtual}"/>
+				</p:selectOneMenu>
+			</div>
+			<br/>
+			
+			<p:commandButton class="input-style" value="Cadastrar" ajax="false" action="#{cadastroNoticiaBean.gravar()}"/>
+				
+	
+		</div>
+	</div>		
+
+		
+</h:form>
+
+
+
+
+</ui:define>
+</ui:composition>
+
+</html>

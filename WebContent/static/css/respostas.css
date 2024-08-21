@@ -1,0 +1,87 @@
+body .ui-datascroller .ui-datascroller-content {
+	border: none;	
+	padding: 0rem;
+}
+
+.area-cadastro {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.comentario {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.topo {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.topo img {
+  width: 6rem; 
+  height: 6rem; 
+  margin-right: 10px;
+  border-radius: 50%; 
+  border: 2px solid #ccc;
+}
+
+.texto-comentario {
+  flex: 1; 
+}
+
+.texto-comentario h3 {
+  font-family: sans-serif !important;
+  font-size: 1.5rem !important;
+}
+
+.texto-comentario p {
+  font-family: sans-serif !important;
+} 
+
+.topo h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.topo p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.base {
+  color: #808080;
+  padding-left: 1.5rem;
+}
+
+.resposta {
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.coluna-90 {
+  	width: 90%;
+}
+
+.tamanho-ampliado {
+	width: 100%;
+}
+
+.coluna-10 {
+	width: 10%;
+}
+
+
+.ui-growl {
+    position: fixed !important;
+    top: 90% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}

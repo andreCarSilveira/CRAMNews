@@ -1,0 +1,41 @@
+.principal {	
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 20rem;
+}
+
+label {
+	font-family: sans-serif !important;
+}
+
+.caixa-secundaria {
+	width: 500px;
+	padding: 10px;
+}
+
+.input-style {
+	width: 480px;
+	font-weight: bold;
+	font-family: sans-serif !important;
+	font-size: 1rem !important;
+}
+
+.centralizado {
+    margin: 0 auto;
+    display: table;
+}
+
+.cadastrar .ui-panelgrid-cell {
+    text-align: center; /* Alinha horizontalmente o conteúdo */
+    vertical-align: middle; /* Alinha verticalmente o conteúdo */
+}
+
+body .ui-panelgrid .ui-panelgrid-cell {
+	padding: 0.25rem !important;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell label {
+	font-size: 1.2rem !important;
+}

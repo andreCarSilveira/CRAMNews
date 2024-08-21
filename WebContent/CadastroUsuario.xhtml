@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:composition template="template.xhtml">
+
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/cadastroUsuario.css" />
+</h:head> 
+</ui:define>
+
+<ui:define name="titulo">Cadastro de usuário</ui:define>
+
+<ui:define name="conteudo"> 
+
+    <h:form enctype="multipart/form-data">
+    <p:growl id="messages" showDetail="true"/>
+		<div class="principal">
+		<div class="caixa-secundaria">
+			<div>
+				<p:outputLabel value="Foto usuário" for="@next" /><br/>
+				<p:fileUpload class="input-style" value="#{cadastroUsuarioBean.uploadedFile}" mode="simple" skinSimple="true" required="true" requiredMessage="Campo foto obrigatório!" />
+			</div>
+			<br/>
+			<div>
+					<p:outputLabel for="nome" value="Nome:" />
+            <p:inputText class="input-style" id="nome" value="#{cadastroUsuarioBean.pessoaFisica.nome}" required="true" requiredMessage="Campo nome obrigatório!" />
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel for="email" value="Email:" />
+            <p:inputText class="input-style" id="email" value="#{cadastroUsuarioBean.pessoaFisica.email}" required="true" requiredMessage="Campo e-mail obrigatório!" />
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel for="login" value="Login:" />
+            <p:inputText class="input-style" id="login" value="#{cadastroUsuarioBean.usuario.login}" required="true"  requiredMessage="Campo login obrigatório!"/>
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel for="senha" value="Senha" />
+			 <p:password class="input-style" id="senha" value="#{cadastroUsuarioBean.usuario.senha}" required="true"  requiredMessage="Campo senha obrigatório!" />
+			</div>
+			<br/>
+			<p:commandButton value="Cadastrar" styleClass="rounded-button ui-button-success input-style" actionListener="#{cadastroUsuarioBean.gravar()}" />
+		</div>
+	</div>		
+    </h:form>
+
+
+
+</ui:define>	
+</ui:composition> 
+</html>

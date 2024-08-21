@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:composition template="template.xhtml">
+
+<ui:define name="titulo">Gerenciamento</ui:define>
+
+
+
+<ui:define name="conteudo"> 
+
+
+<style>
+.btn-style1 {
+	background-color: #7ba05b !important;
+	padding: 8px 20px 8px 20px !important;
+	border-radius: 5px !important;
+	color: white !important;
+	text-decoration: none !important;
+	border: none !important;	
+}
+.btn-style2 {
+	background-color: #7ba05b !important;
+	border-radius: 5px !important;
+	color: white !important;
+	text-decoration: none !important;
+	border: none !important;
+}
+
+#formEdit button {
+	background-color: #6b8e23;
+	border: 1px solid #6b8e23;
+}
+
+#formEdit button:hover {
+	background-color: #63861a;
+	border: 1px solid #63861a;
+}
+
+#formEdit {
+	margin: 0 auto;
+	width: 90%;
+}
+
+</style>
+<h:form id="formEdit">
+<p:commandButton value="Cadastrar nova notícia" action="#{gerenciamentoBean.cadastro}"/>
+	<p:dataTable value="#{gerenciamentoBean.noticias}" var="noticiaAtual" 
+			paginatorPosition="top"	paginator="true" 
+				rows="20">
+		<p:column headerText="Tema">
+			<h:outputText value="#{noticiaAtual.tema}" />
+		</p:column>
+		<p:column headerText="Titulo auxiliar">
+			<h:outputText value="#{noticiaAtual.tituloAuxiliar}" />
+		</p:column>
+		<p:column headerText="Manchete">
+			<h:outputText value="#{noticiaAtual.manchete}" />
+		</p:column>
+		
+		<p:column>
+		<a class="btn-style1" href="editarNoticia.xhtml?id=#{noticiaAtual.id}">		
+				<p:outputLabel value="Editar" />
+		</a>
+		</p:column>
+		
+		<p:column headerText="Excluir">
+        	<p:commandButton class="btn-style2" value="Excluir" process="@form" action="#{gerenciamentoBean.excluir(noticiaAtual)}" update="@form" />
+        </p:column>
+	</p:dataTable>
+</h:form>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ui:define>	
+</ui:composition> 
+</html>

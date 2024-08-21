@@ -1,0 +1,98 @@
+body .ui-dataview .ui-dataview-header {
+	display: none;
+}
+
+.not {
+	border: 1px solid black !important	;
+}
+
+.lista-de-noticias h1 {
+	font-family: sans-serif !important;
+	color: #2e8b57;
+}
+
+.lista-de-noticias label {
+	font-family: sans-serif !important;
+	color: #2e8b57;
+	font-size: 1.2rem;
+}
+
+.lista-de-noticias {
+	margin: 0 auto;
+	width: 70%;
+}
+
+.colunista-lista {
+	
+	padding: 10px;
+}
+
+.noticia {
+	display: flex;
+	justify-content: center;
+	border-radius: 20px;
+}
+.imagem {
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+}
+.p1 {
+	height: 100%;
+	isplay: flex;
+	justiify-content: center;
+	align-items: center;
+	padding-right: 10px;
+	padding-right: 15px;
+}
+
+.p2 {
+height: 100%;
+display: flex;
+	justiify-content: center;
+	align-items: center;
+
+}
+
+.nome-colunista {
+	text-decoration: none !important;
+	color: black;
+	font-weight: bold;
+}
+
+.nome-colunista:hover {
+	cursor: pointer;
+}
+
+.topo {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.textos {
+	display: flex;
+	justify-content: center;
+	aling-items: center;
+
+	height: 110px;
+}
+
+.topo h3 {
+  margin: 0;
+  color: #333;
+  font-family: sans-serif !important;
+  font-size: 1.5rem !important;
+}
+
+.topo p {
+  margin: 5px 0;
+  color: #555;
+  font-family: sans-serif !important;
+}
+
+.comentario {
+	
+  	padding: 5px;
+}

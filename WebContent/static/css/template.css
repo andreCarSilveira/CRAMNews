@@ -1,0 +1,196 @@
+html {
+    height: 100%; 
+    position: relative; 
+}
+
+body {
+    margin: 0; 
+    padding-bottom: 6rem; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+body .ui-sidebar {
+	background-color: #9ac5a8 !important;
+}
+
+body .ui-commandlink, body .ui-link {
+	color: black !important;
+}
+
+.conteudo {
+    flex: 1; 
+}
+
+footer {
+    background-color: #9ac5a8;
+    color: black;
+    padding: 1em 0;
+    width: 100%;
+}
+
+
+.sidebar a {
+  	display: block;
+    text-decoration: none;
+  	
+}
+
+.cabecalho {
+	position: fixed;
+	top: 1;
+    width: 100%;
+    z-index: 1000;
+}
+
+.conteudo {
+	padding-top: 10vh;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+  h3 {
+    display: flex;
+    align-items: center;
+  }
+
+  
+
+sidebar {
+	margin: 0px !important;
+	padding: 0px;
+}
+
+.container-cabecalho {
+	background-color: #9ac5a8;
+    display: flex;
+	height: 11vh;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0px 20px 0px 20px;
+}
+
+.btn-cabecalho {
+	font-weight: bold;
+	font-family: sans-serif !important;
+	font-size: 1rem !important;
+}
+
+.container-cabecalho div {
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    background-color: #9ac5a8;
+    color: black;
+
+    padding: 1em 0;
+   
+    bottom: 0;
+    width: 100%;
+    
+}
+
+.img-perfil {
+	height: 3.8em;
+	width: 3.8em;
+	border-radius: 100%;
+	border: 3px solid white;
+}
+
+body .ui-menubutton.ui-button-success>.ui-button {
+	background-color: #9ac5a8 !important;
+	border: 1px solid #9ac5a8 !important;
+	height: 1rem !important;
+	width: auto !important;
+}
+
+.usuario-perfil {
+	display: block !important;
+}
+
+.div-2 {
+	display: flex;
+	justify-content: center;
+	
+}
+
+.logo {
+	widht: 70px;
+	height: 70px;
+	
+}
+
+.input-pesquisa {
+	border-radius: 50px 0px 0px 50px !important;
+	background-color: #DCDCDC !important;
+}
+.btn-pesquisa {
+	border-radius: 0px 50px 50px 0px !important;
+	background-color: #DCDCDC !important;
+	color: black !important;
+	border: 1px solid #DCDCDC !important;
+}
+
+.titulo-principal {
+	font-family: sans-serif;
+}
+.titulo-principal-a {
+	text-decoration: none;
+	color: black;
+}
+
+.titulo-principal2 {
+	font-family: sans-serif;
+	padding: 12px 25px 12px 25px;	
+	border: 1px solid green;
+	border-radius: 100px;
+}
+.titulo-principal-a2 {
+	text-decoration: none;
+	color: black;
+	
+}
+
+.rodape {
+	margin: 0 auto; 
+  	width: 70%;
+}
+
+.one {
+	display: flex;
+	align-items: center;
+	font-family: sans-serif;
+	margin-bottom: 1rem;
+}
+.two {
+	display: flex;
+	justify-content: space-between;
+	font-family: sans-serif;
+}
+
+.three {
+	text-align: right;
+}
+
+.three p {
+	display: flex;
+	margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.copyright {
+	display: flex;
+	align-items: end;
+}
+
+.copyright p {
+	display: flex;
+	margin-block-start: 0px;
+    margin-block-end: 0px;
+}

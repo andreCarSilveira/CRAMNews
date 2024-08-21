@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+
+<ui:composition template="template.xhtml">
+
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/home.css" />
+</h:head> 
+</ui:define>
+
+<body> 
+	
+	<ui:define name="conteudo">
+		 	
+		<div class="dados-do-usuario">
+			<h1>Bem-vindo #{homeBean.usuario.pessoaFisica.nome}</h1>
+			<div class="dados-pt2">
+				<div class="dados-imagem">
+					<p:graphicImage styleClass="imagem" value="#{homeBean.usuario.pessoaFisica.foto}" stream="false" />
+				</div>
+				<div class="dados-informacoes">
+					<h3>Meus dados</h3>
+					<p:outputLabel value="Nome: #{homeBean.usuario.pessoaFisica.nome}" styleClass="lbl" />
+					<p:outputLabel value="e-mail: #{homeBean.usuario.pessoaFisica.email}" styleClass="lbl" />
+					<p:outputLabel value="Login: #{homeBean.usuario.login}" styleClass="lbl" />
+					<p:outputLabel value="Tipo: #{homeBean.usuario.pessoaFisica.tipo}" styleClass="lbl" />
+			
+					<p:commandButton class="rounded-button ui-button-success input-style" value="Sair" actionListener="#{homeBean.sair()}"/>
+				</div>
+			</div>
+		</div>
+		
+	</ui:define>
+	
+</body>
+
+
+    
+</ui:composition> 
+</html>

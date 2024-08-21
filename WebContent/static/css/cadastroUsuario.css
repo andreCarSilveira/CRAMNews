@@ -1,0 +1,18 @@
+.principal {	
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.caixa-secundaria {
+	width: 390px;
+	padding: 10px;
+}
+
+.input-style {
+	width: 480px;
+	font-weight: bold;
+	font-family: sans-serif !important;
+	font-size: 1rem !important;
+}

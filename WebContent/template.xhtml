@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/template.css" />
+	<ui:insert name="uniqueStyle"></ui:insert>
+</h:head>  
+
+<body> 
+	
+	<div class="cabecalho">
+	    	<h:form>
+	    	
+    		<div class="container-cabecalho">
+    			<div>
+    				<a href="inicio.xhtml" class="titulo-principal-a">
+    					<img class="logo" src="imgs/livro.png" />
+    				</a>&nbsp;&nbsp;
+    				<a href="inicio.xhtml" class="titulo-principal-a">
+    					<h1 class="titulo-principal">CRAMNews</h1>
+    				</a>
+    			</div>
+    			<div class="sub-menu">
+	    			<div>
+	    				<ui:insert name="campoPesquisa"></ui:insert>
+	    			</div>
+	    			&nbsp;&nbsp;&nbsp;&nbsp;
+	    			<div>
+	    				<p:button value="Colunistas" outcome="/colunistaEspecifico.xhtml" type="button" styleClass="rounded-button ui-button-success btn-cabecalho" />
+	    			</div>
+	    			&nbsp;&nbsp;&nbsp;&nbsp;
+	    			<div>
+	    				<ui:insert name="campoCategorias"></ui:insert>
+	    			</div>
+	    			&nbsp;&nbsp;&nbsp;&nbsp;
+	    			<div class="div-usuario">
+	    				
+	    				&nbsp;
+	    				<div class="usuario-perfil">
+	    					<div class="div-2">
+	    						<p:graphicImage class="img-perfil" value="#{homeBean.usuario.pessoaFisica.foto}" rendered="#{not empty homeBean.usuario}" stream="false" />
+	    					</div>
+	    					<div class="div-2">
+					        	<p:button rendered="#{empty homeBean.usuario}" value="Login" outcome="/login.xhtml" styleClass="rounded-button ui-button-success btn-cabecalho"/>
+					        	<p:menuButton  rendered="#{not empty homeBean.usuario and homeBean.verificaTipo() == true}" value="" styleClass="rounded-button ui-button-success menu-cabecalho">
+					        		<p:menuitem value="Home" url="home.xhtml" />
+						            <p:menuitem value="Login" url="login.xhtml"/>
+						 			<p:menuitem value="Cadastro notícia" url="cadastroNoticias.xhtml"/>   
+						 			<p:menuitem value="Meu top notícias" url="topNoticias.xhtml"/> 
+						 			<p:menuitem value="Gerenciamento" url="gerenciamentoNoticias.xhtml" rendered="#{not empty homeBean.usuario}" />
+						 			<p:menuitem value="Sair" actionListener="#{homeBean.sair()}" rendered="#{not empty homeBean.usuario}" />
+					        	</p:menuButton>
+					        	<p:menuButton  rendered="#{not empty homeBean.usuario and homeBean.verificaTipo() == false}" value="" styleClass="rounded-button ui-button-success menu-cabecalho">
+					        		<p:menuitem value="Home" url="home.xhtml" />
+						            <p:menuitem value="Login" url="login.xhtml"/>
+						 			<p:menuitem value="Sair" actionListener="#{homeBean.sair()}" rendered="#{not empty homeBean.usuario}" />
+					        	</p:menuButton>
+				        	</div>
+	        			</div>
+	        		</div>
+        		</div>
+    		</div>
+    		
+    		
+   			
+    	</h:form>
+	</div>
+	
+	<div class="sidebar">
+		<p:sidebar class="sidebar1" widgetVar="sidebar1">
+	        <p:commandLink value="POLITICA" />
+			<p:commandLink value="MUNDO" />
+			<p:commandLink value="SAUDE" />
+			<p:commandLink value="TECNOLOGIA" />
+			<p:commandLink value="CIENCIA" />
+			<p:commandLink value="CURIOSIDADES" />
+			<p:commandLink value="AUTOMOBILISMO" />
+			<p:commandLink value="ESPORTES" />
+			<p:commandLink value="TURISMO" />
+			<p:commandLink value="CINEMA" />
+	    </p:sidebar>
+    </div>
+	
+	<br/><br/>
+	
+	<div class="conteudo">
+		<ui:insert name="conteudo"></ui:insert>
+	</div>
+	<br/><br/>
+	
+	    <footer>
+	    <div class="rodape">
+	    <div class="one">
+		    <div class="one">
+		    	<img class="logo" src="imgs/livro.png" />&nbsp;&nbsp;<h1>CRAMNews</h1>
+		    </div>
+		    
+	    </div>
+	    <div class="two">
+	    	<div class="copyright">
+	    		<p>© Copyright 2024 CRAMNews</p>
+	    	</div>
+	    	<div class="three">
+	    		<p>Este projeto é uma iniciativa de:<br/> André Carvalho da Silveira, Cesar Augusto Oliveira de Paula,<br/> Matheus Muniz Gomes e Roni Gonçalves Py Junior</p>
+	    	</div>
+	    </div>
+        </div>
+    	</footer>
+
+	</body> 
+	</html>

@@ -1,0 +1,22 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+    version="1.0">     
+    <!-- arquivo de persistencia.
+    Aqui é definido o banco de dados ou DataSource que será utilizado -->
+	<persistence-unit name="punit" transaction-type="JTA"> <!-- nome e tipo de persistencia. o nome é usado na classe GenericService -->
+    	<provider>org.hibernate.ejb.HibernatePersistence</provider> <!-- tipo de persistencia -->
+ 
+    	<jta-data-source>java:/cramnewsDS</jta-data-source> <!-- Nome que deu ao seu JNDI/Datasource -->
+    	
+	<properties>
+      		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+      		<property name="hibernate.hbm2ddl.auto"  value="update"/> <!-- comando para gerar automáticamente as tabelas de acordo com o mapeamento 
+      		A estratégia update, atualiza as tabelas a cada nova publicação(Full Publish) da aplicação -->
+      		<!-- Não atualiza classes e atributos modificados e/ou excluidos -->
+      		<property name="database" value="MYSQL" />
+      		<property name="hibernate.show_sql" value="false"/>
+      	  	<property name="hibernate.format_sql" value="false"/>
+    	</properties>
+    </persistence-unit>    
+</persistence>

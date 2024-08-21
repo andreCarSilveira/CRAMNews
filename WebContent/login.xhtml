@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+
+<body> 
+<ui:composition template="template.xhtml">
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/login.css" />
+</h:head> 
+
+</ui:define>
+<ui:define name="conteudo">
+
+	<h:form id="editForm">
+	<p:growl id="mensagens" showDetail="true" life="12000"/>
+	<div class="principal">
+		<div class="caixa-secundaria">
+			<div>
+				<p:outputLabel value="Login" for="@next" /><br/>
+				<p:inputText class="input-style" id="usuario" value="#{validarBean.loginUser}" size="65" />
+			</div>
+			<br/>
+			<div>
+				<p:outputLabel  value="Senha" for="@next" />
+            	<p:password class="input-style" id="senha" value="#{validarBean.senhaUser}" size="30" />
+			</div>
+			<br/>
+			<p:commandButton update="editForm" actionListener="#{validarBean.logar}" value="Acessar" styleClass="rounded-button ui-button-success input-style" />
+		</div>
+	</div>		               							
+	</h:form>
+	<p:panelGrid id="panel" columns="1" layout="grid" styleClass="cadastrar centralizado">
+    	<p:outputLabel value="Não tem usuário?" styleClass="lbl-cadastrar"/>
+    	<p:button  value="Cadastrar" outcome="/CadastroUsuario.xhtml" styleClass="rounded-button ui-button-success btn-cabecalho"/>
+	</p:panelGrid>
+
+			
+</ui:define>
+</ui:composition>
+</body> 
+</html>

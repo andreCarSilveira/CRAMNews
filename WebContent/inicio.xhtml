@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+<ui:composition template="template.xhtml">
+
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/index.css" />
+</h:head> 
+</ui:define>
+
+<body> 
+
+	<ui:define name="campoPesquisa">
+		<div>
+    		<p:inputText styleClass="input-pesquisa" placeholder="Digite sua notícia aqui" value="#{principalBean.filtro}" style="border-radius: 20px;" />
+    		<p:commandButton styleClass="btn-pesquisa" action="#{principalBean.pesquisar()}"   icon="pi pi-search"  update="formInicio"/>
+    	</div>
+	</ui:define>
+	
+	<ui:define name="campoCategorias">
+		<div>
+    		<p:commandButton value="Categorias" type="button" onclick="PF('sidebar1').show()" styleClass="rounded-button ui-button-success btn-cabecalho" />
+    	</div>
+	</ui:define>
+	
+	<ui:define name="conteudo">
+		 	
+		 	<div class="lista-de-noticias">
+			<h:form id="formInicio">
+	
+    			<div class="sidebar">
+		<p:sidebar widgetVar="sidebar1">
+	        <p:commandLink value="POLITICA" action="#{principalBean.setTema('POLITICA')}" update="formInicio"/> 
+			<p:commandLink value="MUNDO" action="#{principalBean.setTema('MUNDO')}" update="formInicio"/>  
+			<p:commandLink value="SAUDE" action="#{principalBean.setTema('SAUDE')}" update="formInicio"/>  
+			<p:commandLink value="TECNOLOGIA" action="#{principalBean.setTema('TECNOLOGIA')}" update="formInicio"/>  
+			<p:commandLink value="CIENCIA" action="#{principalBean.setTema('CIENCIA')}" update="formInicio"/>  
+			<p:commandLink value="CURIOSIDADES" action="#{principalBean.setTema('CURIOSIDADES')}" update="formInicio"/> 
+			<p:commandLink value="AUTOMOBILISMO" action="#{principalBean.setTema('AUTOMOBILISMO')}" update="formInicio"/>  
+			<p:commandLink value="ESPORTES" action="#{principalBean.setTema('ESPORTES')}" update="formInicio"/>  
+			<p:commandLink value="TURISMO" action="#{principalBean.setTema('TURISMO')}" update="formInicio"/>  
+			<p:commandLink value="CINEMA" action="#{principalBean.setTema('CINEMA')}" update="formInicio"/>   
+	    </p:sidebar>
+    </div>
+    			<p:dataScroller var="noticia" value="#{principalBean.noticias}" chunkSize="30"
+                     styleClass="view-noticias"
+                    >
+                    <f:facet name="loader">
+                		<div class="text-center">
+                    		<p:commandButton type="button" value="Mais notícias" icon="pi pi-refresh" styleClass="rounded-button ui-button-success btn-cabecalho"/>
+                		</div>
+            		</f:facet>
+                   		<div class="noticia">
+                   		<div class="imagem">
+                   			<a href="noticia.xhtml?id=#{noticia.id}">
+                   			<p:graphicImage class="imagem" value="#{noticia.foto}" stream="false" />
+                   			</a>
+                   			
+                   		</div>
+                   		<div class="dados">
+                   			<div>
+                   				<p:outputLabel value="#{noticia.tema}" styleClass="tema" />
+                   			</div>
+                   			<div>
+                   				<a href="noticia.xhtml?id=#{noticia.id}">
+                   				<p:outputLabel value="#{noticia.manchete}" styleClass="manchete" />
+                   				</a>
+                   			</div>
+                   			<div>
+                   				<p:outputLabel value="#{noticia.tituloAuxiliar}" styleClass="titulo-auxiliar" />
+                   			</div>
+                   			<div>
+                   				<p:outputLabel value="#{noticia.dataPublicacao}" styleClass="data-publicacao" >
+   									<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+								</p:outputLabel>
+                   			</div>
+                   		</div>
+                   		</div>
+                </p:dataScroller>
+            
+			</h:form>
+		</div>
+		
+	</ui:define>
+	
+</body>
+
+
+    
+</ui:composition> 
+
+
+</html>

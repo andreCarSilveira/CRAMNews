@@ -1,0 +1,135 @@
+body .ui-dataview .ui-dataview-header {
+	display: none;
+}
+
+body .ui-datascroller .ui-datascroller-content {
+	border: none !important;
+}
+
+.input-pesquisa {
+	border-radius: 50px 0px 0px 50px !important;
+	background-color: #DCDCDC !important;
+	border: 1px solid #DCDCDC !important;
+}
+
+body .ui-inputfield.ui-state-hover {
+	border-color: #DCDCDC !important;
+}
+
+.meu-top {
+	display: flex;
+	justify-content: center;
+	font-family: sans-serif !important;
+	font-weight: bold;
+	color: #2e8b57;
+}
+
+body .ui-inputfield.ui-state-focus {
+	box-shadow: none !important;
+}
+
+.top-curtidas {
+	font-size: 0.9rem !important;
+	font-family: sans-serif !important;
+	color: #b81414;
+}
+
+.btn-pesquisa {
+	border-radius: 0px 50px 50px 0px !important;
+	background-color: #DCDCDC !important;
+	color: black !important;
+	border: 1px solid #DCDCDC !important;
+}
+
+a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.lista-noticias {
+	max-width: 70%;
+}
+
+.noticia {
+  	display: flex;
+  	align-items: center;
+  	padding-top: 0.5rem;
+  	padding-bottom: 0.5rem;
+  	border-bottom: 1px solid #DCDCDC;
+}
+
+.text-center {
+	text-align: center;
+	margin-top: 0.5rem;
+}
+
+.imagem {
+	cursor: pointer !important;
+  	flex: 0 0 auto;
+  	margin-right: 20px; 
+  	width: 30rem;
+  	height: 18rem;
+  	border-radius: 15px;
+}
+
+.dados {
+	width: 75vh;
+	word-wrap: break-word;
+  	
+}
+
+.imagem graphicImage {
+  	max-width: 100%; 
+  	height: auto;
+}
+
+.lista-de-noticias {
+  	margin: 0 auto; 
+  	width: 70%; 
+}
+
+.img-noticia {
+	width: 30rem;
+	margin: 5px 5px 2px 5px;
+	border-radius: 15px;
+}
+
+.tema {
+	font-family: sans-serif !important;
+}
+
+.manchete {
+	cursor: pointer !important;
+	font-size: 2rem !important; 
+	font-family: sans-serif !important;
+	font-weight: bold;
+	color: #2e8b57;
+}
+
+.manchete:hover {
+	color: #2c6846;
+}
+
+.titulo-auxiliar {
+	font-size: 1.2rem !important;
+	font-family: sans-serif !important;
+	font-weight: bold;
+	color: #778899;
+}
+
+.data-publicacao {
+	font-size: 0.9rem !important;
+	font-family: sans-serif !important;
+	color: #778899;
+}
+
+.format-1 {
+	widht: 100%;
+	padding: 10px;
+	margin-bottom: 30px;
+}
+.img-perfil-1 {
+	border-radius: 80px !important;
+	width: 130px;
+	height: 130px;
+}

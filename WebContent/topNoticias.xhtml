@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+<ui:composition template="template.xhtml">
+
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/index.css" />
+</h:head> 
+</ui:define>
+
+<body> 
+	
+	<ui:define name="conteudo">
+	
+	
+		<div class="lista-de-noticias">
+			<h1 class="meu-top">Meu top notícias</h1>
+			<h:form>
+    			<p:dataView var="noticia" value="#{topNoticiasBean.noticias}" rows="30" paginator="false"
+                     styleClass="view-noticias"
+                    >
+                   	<p:dataViewListItem>
+                   		<div class="noticia">
+                   		<div class="imagem">
+                   			<a href="noticia.xhtml?id=#{noticia.id}">
+                   			<p:graphicImage class="imagem" value="#{noticia.foto}" stream="false" />
+                   			</a>
+                   			
+                   		</div>
+                   		<div class="dados">
+                   			<div>
+                   				<p:outputLabel value="#{noticia.tema}" styleClass="tema" />
+                   			</div>
+                   			<div>
+                   				<a href="noticia.xhtml?id=#{noticia.id}">
+                   				<p:outputLabel value="#{noticia.manchete}" styleClass="manchete" />
+                   				</a>
+                   			</div>
+                   			<div>
+                   				<p:outputLabel value="#{noticia.tituloAuxiliar}" styleClass="titulo-auxiliar" />
+                   			</div>
+                   			<div>
+                   				<p:outputLabel value="#{noticia.dataPublicacao}" styleClass="data-publicacao" >
+   									<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+								</p:outputLabel>
+                   			</div>
+                   			<div>
+                   				<p:outputLabel value="#{noticia.curtidas} like e #{noticia.dislikes} dislike" styleClass="top-curtidas" />
+                   			</div>
+                   		</div>
+                   		</div>
+                   	</p:dataViewListItem>
+                </p:dataView>
+            
+			</h:form>
+		</div>
+		
+	</ui:define>
+	
+</body>
+
+
+    
+</ui:composition> 
+
+<br/><br/><br/><br/><br/><br/>
+
+</html>

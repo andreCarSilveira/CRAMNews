@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+<h:head>
+    <title>Notícias do Colunista</title>
+</h:head>
+
+
+
+<ui:composition template="template.xhtml">
+
+<ui:define name="uniqueStyle">
+<h:head>
+	<link type="text/css" rel="stylesheet" 
+		href="#{request.contextPath}/static/css/colunistaEspecifico.css" />
+</h:head> 
+</ui:define>
+
+<body> 
+	
+	<ui:define name="conteudo">
+       
+        <div class="lista-de-noticias">
+        <h1>Nossos Colunistas</h1>
+			<h:form>
+    			<p:dataView id="colunistas" var="colunista" value="#{colunistaEspecificoBean.pessoasFisicas}" rows="30" paginator="false"
+                     styleClass="view-noticias"
+                    >
+                   	<p:dataViewListItem class="not">
+                   		<div class="comentario">
+                			<div class="topo">
+                    			<a class="nome-colunista" href="noticiaEspecifica.xhtml?id=#{colunista.id}">
+	                    			<div class="textos">
+	                    			<div class="p1">
+	                    				<p:graphicImage class="imagem" value="#{colunista.usuario.pessoaFisica.foto}" stream="false" />
+	                    			</div>
+	                    			
+	                    			<div class="p2">
+	                    				<p:outputLabel class="nome-colunista" value="#{colunista.nome}"  />
+	                    			</div>
+		                   				
+		                   				
+		                   			</div>
+	                   			</a>
+                			</div>
+                   		</div>
+                   	</p:dataViewListItem>
+                </p:dataView>
+			</h:form>
+		</div>
+        
+        
+        
+        </ui:define>
+     
+        
+      
+       
+    
+</body>
+   </ui:composition>
+</html>

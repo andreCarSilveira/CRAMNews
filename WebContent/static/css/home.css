@@ -1,0 +1,42 @@
+.dados-do-usuario {
+	margin: 0 auto;
+	width: 70%;
+}
+
+.dados-do-usuario h1 {
+	display: flex;
+	justify-content: center;
+	font-family: sans-serif !important;
+	color: #2e8b57;
+}
+
+.dados-do-usuario h3 {
+	display: flex;
+	font-family: sans-serif !important;
+	color: #2e8b57;
+}
+
+.dados-pt2 {
+	display: grid;
+	grid-template-columns: 30% 70%;
+}
+
+.input-style {
+	display: block;
+	margin-top: 1rem !important;
+	font-weight: bold;
+	font-family: sans-serif !important;
+	font-size: 1rem !important;
+}
+
+.lbl {
+	display: flex;
+	font-family: sans-serif !important;
+}
+
+.imagem {
+	border-radius: 50%;
+	border: 3px solid #DCDCDC;
+	width: 260px;
+	height: 260px;
+}
